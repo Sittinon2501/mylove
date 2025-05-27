@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Kanit:wght@400;700&display=swap');
+
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
   background: #fff0f6;
   overflow: hidden;
   display: flex;
@@ -60,7 +62,7 @@ body, html {
   left: 0;
   right: 0;
   /* top: unset; */
-  max-width: 600px;
+  max-width: 800px;
   width: 100%;
   background: rgba(255,255,255,0.85);
   border-radius: 24px;
@@ -76,7 +78,7 @@ body, html {
 }
 
 .main-content h1 {
-  font-family: cursive, 'Segoe UI', sans-serif;
+  font-family: 'Dancing Script', cursive, 'Kanit', sans-serif;
   font-size: 3.2rem;
   color: #ff69b4;
   margin-bottom: 1rem;
@@ -92,7 +94,7 @@ body, html {
 }
 
 .main-content p {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
   font-size: 1.4rem;
   color: #d72660;
   margin-bottom: 2rem;
@@ -179,7 +181,7 @@ body, html {
   margin: 0 auto 1.5rem auto;
   padding: 0.9rem 2.2rem;
   font-size: 1.3rem;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
   color: #fff;
   background: linear-gradient(90deg, #ff69b4 60%, #ffd966 100%);
   border: none;
@@ -200,7 +202,7 @@ body, html {
   margin: 1.2rem auto 0 auto;
   padding: 0.9rem 2.2rem;
   font-size: 1.2rem;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
   color: #fff;
   background: linear-gradient(90deg, #7ed6df 60%, #ff69b4 100%);
   border: none;
@@ -254,7 +256,7 @@ body, html {
 }
 
 .wish-popup h2 {
-  font-family: cursive, 'Segoe UI', sans-serif;
+  font-family: 'Dancing Script', cursive, 'Kanit', sans-serif;
   color: #ff69b4;
   font-size: 2.3rem;
   margin-bottom: 1.2rem;
@@ -270,7 +272,7 @@ body, html {
 }
 
 .wish-popup p {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
   color: #d72660;
   font-size: 1.25rem;
   margin-bottom: 2.2rem;
@@ -282,7 +284,7 @@ body, html {
 .close-btn {
   padding: 0.8rem 2.2rem;
   font-size: 1.15rem;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
   color: #fff;
   background: linear-gradient(90deg, #ff69b4 60%, #ffd966 100%);
   border: none;
