@@ -7,6 +7,8 @@
   padding: 2.5rem 2rem 2rem 2rem;
   text-align: center;
   animation: fadeInStory 1.2s cubic-bezier(.23,1.01,.32,1) both;
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes fadeInStory {
