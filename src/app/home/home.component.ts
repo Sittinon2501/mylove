@@ -44,13 +44,13 @@ export class HomeComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.startLetterRain();
-    this.startHeartRain();
+    this.startHeartRain(); // เพิ่มเรียก heart rain
   }
 
   @HostListener('window:resize')
   onResize() {
     this.startLetterRain();
-    this.startHeartRain();
+    this.startHeartRain(); // เพิ่มเรียก heart rain
   }
 
   startLetterRain() {
@@ -134,7 +134,7 @@ export class HomeComponent implements AfterViewInit {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const heartCount = 22;
+    const heartCount = 40; // เพิ่มจำนวนหัวใจ
     const hearts = Array.from({ length: heartCount }).map(() => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
@@ -142,19 +142,45 @@ export class HomeComponent implements AfterViewInit {
       speed: 40 + Math.random() * 40,
       alpha: 0.5 + Math.random() * 0.4,
       drift: (Math.random() - 0.5) * 0.7,
-      color: ['#ff69b4', '#ffd966', '#f7b2ad', '#7ed6df'][Math.floor(Math.random() * 4)]
+      color: [
+        '#ff69b4',
+        '#ffd966',
+        '#f7b2ad',
+        '#7ed6df',
+      ][Math.floor(Math.random() * 4)],
     }));
 
     let lastTime = performance.now();
 
-    function drawHeart(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, color: string, alpha: number) {
+    function drawHeart(
+      ctx: CanvasRenderingContext2D,
+      x: number,
+      y: number,
+      size: number,
+      color: string,
+      alpha: number
+    ) {
       ctx.save();
       ctx.globalAlpha = alpha;
       ctx.beginPath();
       ctx.moveTo(x, y + size * 0.3);
       ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + size * 0.3);
-      ctx.bezierCurveTo(x - size / 2, y + size * 0.6, x, y + size * 0.9, x, y + size);
-      ctx.bezierCurveTo(x, y + 0.9 * size, x + size / 2, y + 0.6 * size, x + size / 2, y + size * 0.3);
+      ctx.bezierCurveTo(
+        x - size / 2,
+        y + size * 0.6,
+        x,
+        y + size * 0.9,
+        x,
+        y + size
+      );
+      ctx.bezierCurveTo(
+        x,
+        y + 0.9 * size,
+        x + size / 2,
+        y + 0.6 * size,
+        x + size / 2,
+        y + size * 0.3
+      );
       ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + size * 0.3);
       ctx.closePath();
       ctx.fillStyle = color;
