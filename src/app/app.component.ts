@@ -8,6 +8,38 @@ import { Component, AfterViewInit, HostListener } from '@angular/core';
 export class AppComponent implements AfterViewInit {
   title = 'mylove';
 
+  wishPopupVisible = false;
+
+  showWishPopup() {
+    this.wishPopupVisible = true;
+    setTimeout(() => this.launchConfetti(), 50);
+  }
+
+  closeWishPopup() {
+    this.wishPopupVisible = false;
+  }
+
+  launchConfetti() {
+    const confettiColors = ['#ff69b4', '#ffd966', '#7ed6df', '#f7b2ad', '#ffb347', '#fff0f6'];
+    const confettiContainer = document.getElementById('confetti-container');
+    if (!confettiContainer) return;
+    confettiContainer.innerHTML = '';
+    for (let i = 0; i < 32; i++) {
+      const div = document.createElement('div');
+      div.className = 'confetti-piece';
+      div.style.background = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+      div.style.left = Math.random() * 95 + '%';
+      div.style.top = (Math.random() * 10 - 10) + 'px';
+      div.style.transform = `rotate(${Math.random() * 360}deg)`;
+      div.style.animationDelay = (Math.random() * 0.7) + 's';
+      confettiContainer.appendChild(div);
+    }
+    // Remove confetti after animation
+    setTimeout(() => {
+      if (confettiContainer) confettiContainer.innerHTML = '';
+    }, 2200);
+  }
+
   ngAfterViewInit() {
     this.startLetterRain();
   }

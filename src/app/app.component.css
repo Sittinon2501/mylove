@@ -175,3 +175,130 @@ body, html {
     font-size: 12vw;
   }
 }
+
+.wish-btn {
+  display: inline-block;
+  margin: 0 auto 1.5rem auto;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.3rem;
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
+  color: #fff;
+  background: linear-gradient(90deg, #ff69b4 60%, #ffd966 100%);
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0 2px 12px #ffb6c1a0;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.wish-btn:hover {
+  background: linear-gradient(90deg, #ffd966 40%, #ff69b4 100%);
+  transform: scale(1.05);
+}
+
+.wish-popup-backdrop {
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: radial-gradient(ellipse at center, #fff0f6cc 0%, #ffb6c1cc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
+.wish-popup {
+  position: relative;
+  background: linear-gradient(135deg, #fff0f6 70%, #ffe3e3 100%);
+  border-radius: 32px;
+  box-shadow: 0 8px 40px 0 #ff69b4a0, 0 0 0 8px #fff0f6cc;
+  padding: 2.8rem 2.2rem 2.2rem 2.2rem;
+  max-width: 95vw;
+  width: 380px;
+  text-align: center;
+  animation: popupScale 0.5s cubic-bezier(.23,1.01,.32,1) both;
+  border: 2px solid #ffd6e0;
+  overflow: visible;
+}
+
+@keyframes popupScale {
+  0% { opacity: 0; transform: scale(0.7);}
+  80% { opacity: 1; transform: scale(1.08);}
+  100% { opacity: 1; transform: scale(1);}
+}
+
+.wish-popup h2 {
+  font-family: 'Dancing Script', cursive, 'Kanit', sans-serif;
+  color: #ff69b4;
+  font-size: 2.3rem;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 2px 24px #ffd6e0, 0 0 8px #fff;
+  letter-spacing: 1.5px;
+  animation: wishPop 0.7s cubic-bezier(.23,1.01,.32,1);
+}
+
+@keyframes wishPop {
+  0% { opacity: 0; transform: scale(0.7);}
+  60% { opacity: 1; transform: scale(1.15);}
+  100% { opacity: 1; transform: scale(1);}
+}
+
+.wish-popup p {
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
+  color: #d72660;
+  font-size: 1.25rem;
+  margin-bottom: 2.2rem;
+  text-shadow: 0 1px 8px #fff0f6;
+  line-height: 1.6;
+  animation: fadeIn 1.2s;
+}
+
+.close-btn {
+  padding: 0.8rem 2.2rem;
+  font-size: 1.15rem;
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
+  color: #fff;
+  background: linear-gradient(90deg, #ff69b4 60%, #ffd966 100%);
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  font-weight: bold;
+  box-shadow: 0 2px 12px #ffb6c1a0;
+  letter-spacing: 1px;
+}
+.close-btn:hover {
+  background: linear-gradient(90deg, #ffd966 40%, #ff69b4 100%);
+  color: #d72660;
+  box-shadow: 0 4px 24px #ffd6e0;
+}
+
+.confetti {
+  position: absolute;
+  pointer-events: none;
+  left: 0; top: 0; width: 100%; height: 100%;
+  z-index: 10;
+  overflow: visible;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 12px;
+  height: 18px;
+  border-radius: 4px;
+  opacity: 0.85;
+  animation: confetti-fall 1.8s linear forwards;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-40px) rotateZ(0deg);}
+  80% { opacity: 1;}
+  100% { transform: translateY(340px) rotateZ(360deg); opacity: 0;}
+}

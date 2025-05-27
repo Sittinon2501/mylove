@@ -61,8 +61,33 @@
       </g>
     </svg>
   </div>
+  <!-- Add wish button below the cake -->
+  <button class="wish-btn" (click)="showWishPopup()">อธิษฐานและเป่าเทียน 🎂</button>
   <h1>สุขสันต์วันเกิดที่รัก 💖</h1>
   <p>ขอให้วันนี้เป็นวันที่พิเศษที่สุดสำหรับเธอ มีความสุขมากๆนะคะ</p>
   <img src="assets/your-image.jpg" alt="Happy Birthday" class="birthday-img"/>
   <!-- Add more images or messages as you like -->
 </div>
+
+<!-- Popup Modal -->
+@if (wishPopupVisible) {
+  <div class="wish-popup-backdrop">
+    <div class="wish-popup">
+      <!-- Confetti effect -->
+      <div class="confetti" id="confetti-container"></div>
+      <h2>🎉 คำอธิษฐานของคุณ 🎉</h2>
+      <p>
+        <span style="font-size:2.1rem; color:#ffd966; vertical-align:middle;">✨</span>
+        <span style="font-family:'Dancing Script',cursive,'Kanit',sans-serif; color:#ff69b4; font-size:1.5rem;">
+          ขอให้คำอธิษฐานของคุณเป็นจริงในปีนี้
+        </span>
+        <br>
+        <span style="color:#d72660; font-size:1.1rem;">
+          มีแต่ความสุข ความสำเร็จ และความรักเต็มเปี่ยม 💖
+        </span>
+        <span style="font-size:2.1rem; color:#ffd966; vertical-align:middle;">✨</span>
+      </p>
+      <button class="close-btn" (click)="closeWishPopup()">ปิด</button>
+    </div>
+  </div>
+}
