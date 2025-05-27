@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Kanit:wght@400;700&display=swap');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
+  background: #fff0f6;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* เปลี่ยนจาก center เป็น flex-start */
+  min-height: 100vh;
+}
+
+.background-text {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.bg-hb, .bg-ily {
+  position: absolute;
+  color: #ffb6c1;
+  opacity: 0.12;
+  font-size: 8vw;
+  font-weight: bold;
+  white-space: nowrap;
+  width: 100vw;
+  text-align: center;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  user-select: none;
+  text-shadow: 0 0 40px #fff, 0 0 10px #ff69b4;
+  transition: opacity 1s;
+}
+
+.bg-hb {
+  top: 20vh;
+}
+
+.bg-ily {
+  bottom: 15vh;
+}
+
+#letterRain {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  background: transparent;
+}
+
+.main-content {
+  position: relative;
+  z-index: 2;
+  margin: 40px auto 0 auto; /* เพิ่ม margin-top */
+  left: 0;
+  right: 0;
+  /* top: unset; */
+  max-width: 600px;
+  width: 100%;
+  background: rgba(255,255,255,0.85);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(255,105,180,0.15);
+  padding: 2rem 2.5rem;
+  text-align: center;
+  animation: fadeInUp 1.2s cubic-bezier(.23,1.01,.32,1) both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(60px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.main-content h1 {
+  font-family: 'Dancing Script', cursive, 'Kanit', sans-serif;
+  font-size: 3.2rem;
+  color: #ff69b4;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 16px #fff0f6, 0 4px 32px #ffb6c1;
+  letter-spacing: 2px;
+  animation: birthdayPop 1.2s cubic-bezier(.23,1.01,.32,1) both;
+}
+
+@keyframes birthdayPop {
+  0% { opacity: 0; transform: scale(0.7) translateY(60px);}
+  60% { opacity: 1; transform: scale(1.15) translateY(-10px);}
+  100% { opacity: 1; transform: scale(1) translateY(0);}
+}
+
+.main-content p {
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
+  font-size: 1.4rem;
+  color: #d72660;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 8px #fff0f6;
+}
+
+.birthday-img {
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #ffb6c1a0;
+  margin-bottom: 1rem;
+  transition: transform 0.5s cubic-bezier(.23,1.01,.32,1);
+}
+.birthday-img:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.cake-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.birthday-cake-animated {
+  filter: drop-shadow(0 4px 24px #ffb6c1a0);
+  animation: cakePop 1.2s cubic-bezier(.23,1.01,.32,1) both;
+  max-width: 100%;
+  width: 440px;
+  height: 340px;
+  max-width: 100vw;
+  max-height: 60vw;
+}
+
+@media (max-width: 900px) {
+  body, html {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .main-content {
+    margin-top: 24px;
+    max-width: 90vw;
+    padding: 1.5rem 1rem;
+  }
+  .birthday-cake-animated {
+    width: 320px;
+    height: 250px;
+    max-height: 50vw;
+  }
+  .main-content h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    max-width: 98vw;
+    padding: 1rem 0.5rem;
+    top: 4vh;
+  }
+  .birthday-cake-animated {
+    width: 98vw;
+    height: auto;
+    max-height: 40vh;
+  }
+  .main-content h1 {
+    font-size: 1.5rem;
+  }
+  .main-content p {
+    font-size: 1rem;
+  }
+  .birthday-img {
+    max-width: 95vw;
+  }
+  .bg-hb, .bg-ily {
+    font-size: 12vw;
+  }
+}
+
+.wish-btn {
+  display: inline-block;
+  margin: 0 auto 1.5rem auto;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.3rem;
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
+  color: #fff;
+  background: linear-gradient(90deg, #ff69b4 60%, #ffd966 100%);
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0 2px 12px #ffb6c1a0;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.wish-btn:hover {
+  background: linear-gradient(90deg, #ffd966 40%, #ff69b4 100%);
+  transform: scale(1.05);
+}
+
+.wish-popup-backdrop {
+  position: fixed;
+  z-index: 1000;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: radial-gradient(ellipse at center, #fff0f6cc 0%, #ffb6c1cc 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
+.wish-popup {
+  position: relative;
+  background: linear-gradient(135deg, #fff0f6 70%, #ffe3e3 100%);
+  border-radius: 32px;
+  box-shadow: 0 8px 40px 0 #ff69b4a0, 0 0 0 8px #fff0f6cc;
+  padding: 2.8rem 2.2rem 2.2rem 2.2rem;
+  max-width: 95vw;
+  width: 380px;
+  text-align: center;
+  animation: popupScale 0.5s cubic-bezier(.23,1.01,.32,1) both;
+  border: 2px solid #ffd6e0;
+  overflow: visible;
+}
+
+@keyframes popupScale {
+  0% { opacity: 0; transform: scale(0.7);}
+  80% { opacity: 1; transform: scale(1.08);}
+  100% { opacity: 1; transform: scale(1);}
+}
+
+.wish-popup h2 {
+  font-family: 'Dancing Script', cursive, 'Kanit', sans-serif;
+  color: #ff69b4;
+  font-size: 2.3rem;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 2px 24px #ffd6e0, 0 0 8px #fff;
+  letter-spacing: 1.5px;
+  animation: wishPop 0.7s cubic-bezier(.23,1.01,.32,1);
+}
+
+@keyframes wishPop {
+  0% { opacity: 0; transform: scale(0.7);}
+  60% { opacity: 1; transform: scale(1.15);}
+  100% { opacity: 1; transform: scale(1);}
+}
+
+.wish-popup p {
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
+  color: #d72660;
+  font-size: 1.25rem;
+  margin-bottom: 2.2rem;
+  text-shadow: 0 1px 8px #fff0f6;
+  line-height: 1.6;
+  animation: fadeIn 1.2s;
+}
+
+.close-btn {
+  padding: 0.8rem 2.2rem;
+  font-size: 1.15rem;
+  font-family: 'Kanit', 'Segoe UI', sans-serif;
+  color: #fff;
+  background: linear-gradient(90deg, #ff69b4 60%, #ffd966 100%);
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  font-weight: bold;
+  box-shadow: 0 2px 12px #ffb6c1a0;
+  letter-spacing: 1px;
+}
+.close-btn:hover {
+  background: linear-gradient(90deg, #ffd966 40%, #ff69b4 100%);
+  color: #d72660;
+  box-shadow: 0 4px 24px #ffd6e0;
+}
+
+.confetti {
+  position: absolute;
+  pointer-events: none;
+  left: 0; top: 0; width: 100%; height: 100%;
+  z-index: 10;
+  overflow: visible;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 12px;
+  height: 18px;
+  border-radius: 4px;
+  opacity: 0.85;
+  animation: confetti-fall 1.8s linear forwards;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-40px) rotateZ(0deg);}
+  80% { opacity: 1;}
+  100% { transform: translateY(340px) rotateZ(360deg); opacity: 0;}
+}
