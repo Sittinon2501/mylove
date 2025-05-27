@@ -70,24 +70,22 @@
 </div>
 
 <!-- Popup Modal -->
-@if (wishPopupVisible) {
-  <div class="wish-popup-backdrop">
-    <div class="wish-popup">
-      <!-- Confetti effect -->
-      <div class="confetti" id="confetti-container"></div>
-      <h2>🎉 Your Birthday Wish 🎉</h2>
-      <p>
-        <span style="font-size:2.1rem; color:#ffd966; vertical-align:middle;">✨</span>
-        <span style="font-family:'Pacifico',cursive,'Quicksand',sans-serif; color:#ff69b4; font-size:1.5rem;">
-          May all your wishes come true this year!
-        </span>
-        <br>
-        <span style="color:#d72660; font-size:1.1rem;">
-          Wishing you happiness, success, and endless love 💖
-        </span>
-        <span style="font-size:2.1rem; color:#ffd966; vertical-align:middle;">✨</span>
-      </p>
-      <button class="close-btn" (click)="closeWishPopup()">Close</button>
-    </div>
+<div *ngIf="wishPopupVisible" class="wish-popup-backdrop">
+  <div class="wish-popup">
+    <!-- Confetti effect -->
+    <div class="confetti" id="confetti-container"></div>
+    <h2>🎉 Your Birthday Wish 🎉</h2>
+    <p>
+      <span style="font-size:2.1rem; color:#ffd966; vertical-align:middle;">✨</span>
+      <span style="font-family:'Pacifico',cursive,'Quicksand',sans-serif; color:#ff69b4; font-size:1.5rem;">
+        May all your wishes come true this year!
+      </span>
+      <br>
+      <span style="color:#d72660; font-size:1.1rem;">
+        Wishing you happiness, success, and endless love 💖
+      </span>
+      <span style="font-size:2.1rem; color:#ffd966; vertical-align:middle;">✨</span>
+    </p>
+    <button class="close-btn" (click)="closeWishPopup()">Close</button>
   </div>
-}
+</div>
