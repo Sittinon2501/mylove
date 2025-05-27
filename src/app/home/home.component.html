@@ -61,11 +61,11 @@
       </g>
     </svg>
   </div>
-  <!-- ปุ่มอธิษฐานและเป่าเทียน -->
-  <button class="wish-btn" (click)="showWishPopup()">อธิษฐานและเป่าเทียน 🎂</button>
-  <h1>สุขสันต์วันเกิดที่รัก 💖</h1>
-  <p>ขอให้วันนี้เป็นวันที่พิเศษที่สุดสำหรับเธอ มีความสุขมากๆนะคะ</p>
-  <button class="story-btn" routerLink="/story">ดู Story 📖</button>
+  <!-- Wish and blow candle button -->
+  <button class="wish-btn" (click)="showWishPopup()">Make a Wish & Blow the Candle 🎂</button>
+  <h1>Happy Birthday, My Love 💖</h1>
+  <p>May this day be the most special for you. Wishing you endless happiness!</p>
+  <button class="story-btn" routerLink="/story">See Our Story 📖</button>
   <!-- Add more images or messages as you like -->
 </div>
 
@@ -75,19 +75,19 @@
     <div class="wish-popup">
       <!-- Confetti effect -->
       <div class="confetti" id="confetti-container"></div>
-      <h2>🎉 คำอธิษฐานของคุณ 🎉</h2>
+      <h2>🎉 Your Birthday Wish 🎉</h2>
       <p>
         <span style="font-size:2.1rem; color:#ffd966; vertical-align:middle;">✨</span>
-        <span style="font-family:'Dancing Script',cursive,'Kanit',sans-serif; color:#ff69b4; font-size:1.5rem;">
-          ขอให้คำอธิษฐานของคุณเป็นจริงในปีนี้
+        <span style="font-family:'Pacifico',cursive,'Quicksand',sans-serif; color:#ff69b4; font-size:1.5rem;">
+          May all your wishes come true this year!
         </span>
         <br>
         <span style="color:#d72660; font-size:1.1rem;">
-          มีแต่ความสุข ความสำเร็จ และความรักเต็มเปี่ยม 💖
+          Wishing you happiness, success, and endless love 💖
         </span>
         <span style="font-size:2.1rem; color:#ffd966; vertical-align:middle;">✨</span>
       </p>
-      <button class="close-btn" (click)="closeWishPopup()">ปิด</button>
+      <button class="close-btn" (click)="closeWishPopup()">Close</button>
     </div>
   </div>
 }
