@@ -44,11 +44,13 @@ export class HomeComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.startLetterRain();
+    this.startHeartRain();
   }
 
   @HostListener('window:resize')
   onResize() {
     this.startLetterRain();
+    this.startHeartRain();
   }
 
   startLetterRain() {
@@ -123,5 +125,60 @@ export class HomeComponent implements AfterViewInit {
       requestAnimationFrame(draw);
     }
     requestAnimationFrame(draw);
+  }
+
+  startHeartRain() {
+    const canvas = document.getElementById('heartRain') as HTMLCanvasElement;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d')!;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const heartCount = 22;
+    const hearts = Array.from({ length: heartCount }).map(() => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: 18 + Math.random() * 18,
+      speed: 40 + Math.random() * 40,
+      alpha: 0.5 + Math.random() * 0.4,
+      drift: (Math.random() - 0.5) * 0.7,
+      color: ['#ff69b4', '#ffd966', '#f7b2ad', '#7ed6df'][Math.floor(Math.random() * 4)]
+    }));
+
+    let lastTime = performance.now();
+
+    function drawHeart(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, color: string, alpha: number) {
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.beginPath();
+      ctx.moveTo(x, y + size * 0.3);
+      ctx.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + size * 0.3);
+      ctx.bezierCurveTo(x - size / 2, y + size * 0.6, x, y + size * 0.9, x, y + size);
+      ctx.bezierCurveTo(x, y + 0.9 * size, x + size / 2, y + 0.6 * size, x + size / 2, y + size * 0.3);
+      ctx.bezierCurveTo(x + size / 2, y, x, y, x, y + size * 0.3);
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function animate(now: number) {
+      const delta = (now - lastTime) / 1000;
+      lastTime = now;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const h of hearts) {
+        drawHeart(ctx, h.x, h.y, h.size, h.color, h.alpha);
+        h.y += h.speed * delta;
+        h.x += h.drift;
+        if (h.y > canvas.height + h.size) {
+          h.y = -h.size * 2;
+          h.x = Math.random() * canvas.width;
+        }
+        if (h.x < -h.size) h.x = canvas.width + h.size;
+        if (h.x > canvas.width + h.size) h.x = -h.size;
+      }
+      requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
   }
 }
