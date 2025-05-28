@@ -12,14 +12,25 @@ export class HomeComponent implements AfterViewInit {
   title = 'mylove';
 
   wishPopupVisible = false;
+  balloonPopupVisible = false; // เพิ่มตัวแปรนี้
 
   showWishPopup() {
     this.wishPopupVisible = true;
     setTimeout(() => this.launchConfetti(), 50);
+    this.showBalloons(); // เพิ่มเรียกแสดงลูกโป่ง
   }
 
   closeWishPopup() {
     this.wishPopupVisible = false;
+  }
+
+  showBalloons() {
+    this.balloonPopupVisible = true;
+    setTimeout(() => this.hideBalloons(), 2500); // ลูกโป่งหายหลัง 2.5 วิ
+  }
+
+  hideBalloons() {
+    this.balloonPopupVisible = false;
   }
 
   launchConfetti() {
