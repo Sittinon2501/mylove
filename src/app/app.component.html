@@ -1,1 +1,24 @@
+<audio #bgm src="muss.mp3" autoplay loop [muted]="isMuted" [volume]="0.18" style="display:none"></audio>
+<button class="music-btn" (click)="toggleMute()" [title]="isMuted ? 'Unmute' : 'Mute'">
+  <span *ngIf="isMuted" class="music-icon">
+    <!-- ลำโพงปิดเสียง (SVG) -->
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <g>
+        <path d="M4 10v8h6l7 6V4l-7 6H4z" fill="#bbb"/>
+        <line x1="20" y1="8" x2="26" y2="20" stroke="#f77" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="26" y1="8" x2="20" y2="20" stroke="#f77" stroke-width="2.5" stroke-linecap="round"/>
+      </g>
+    </svg>
+  </span>
+  <span *ngIf="!isMuted" class="music-icon">
+    <!-- ลำโพงเปิดเสียง (SVG) -->
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <g>
+        <path d="M4 10v8h6l7 6V4l-7 6H4z" fill="#bbb"/>
+        <path d="M21 11c1.5 1.5 1.5 4.5 0 6" stroke="#3af" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M24 8c3 3 3 9 0 12" stroke="#3af" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      </g>
+    </svg>
+  </span>
+</button>
 <router-outlet></router-outlet>
