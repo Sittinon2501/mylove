@@ -449,3 +449,175 @@ body, html {
   .image-firework.left { left: 1vw; }
   .image-firework.right { right: 1vw; }
 }
+
+/* Cute floating hearts animation */
+.floating-heart {
+  position: absolute;
+  bottom: 10px;
+  font-size: 2.2rem;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: floatHeart 3.5s ease-in infinite;
+}
+@keyframes floatHeart {
+  0% { transform: translateY(0) scale(1) rotate(-8deg); opacity: 0.7;}
+  30% { opacity: 1;}
+  60% { transform: translateY(-60px) scale(1.15) rotate(8deg);}
+  100% { transform: translateY(-120px) scale(1.1) rotate(-8deg); opacity: 0;}
+}
+
+/* Cute decorations around cake */
+.cake-deco {
+  position: absolute;
+  font-size: 1.5rem;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.85;
+  animation: decoPop 2.2s cubic-bezier(.23,1.01,.32,1) both;
+}
+@keyframes decoPop {
+  0% { opacity: 0; transform: scale(0.5) rotate(-30deg);}
+  60% { opacity: 1; transform: scale(1.2) rotate(10deg);}
+  100% { opacity: 0.85; transform: scale(1) rotate(0);}
+}
+
+/* Animated bounce for buttons */
+.animated-bounce {
+  animation: bounceBtn 1.5s infinite alternate cubic-bezier(.23,1.01,.32,1);
+}
+@keyframes bounceBtn {
+  0% { transform: translateY(0);}
+  60% { transform: translateY(-8px) scale(1.04);}
+  100% { transform: translateY(-14px) scale(1.08);}
+}
+
+/* Animated pop for h1 */
+.animated-pop {
+  animation: popH1 1.2s cubic-bezier(.23,1.01,.32,1) both;
+}
+@keyframes popH1 {
+  0% { opacity: 0; transform: scale(0.7);}
+  60% { opacity: 1; transform: scale(1.15);}
+  100% { opacity: 1; transform: scale(1);}
+}
+
+/* Typewriter effect for p */
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #ff69b4;
+  animation: typing 3.2s steps(40, end), blink-caret 0.7s step-end infinite;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+@keyframes typing {
+  from { width: 0;}
+  to { width: 100%;}
+}
+@keyframes blink-caret {
+  0%, 100% { border-color: transparent;}
+  50% { border-color: #ff69b4;}
+}
+
+.balloon-overlay {
+  position: fixed;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  z-index: 2000;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -120px;
+  width: 48px;
+  height: 66px;
+  border-radius: 50% 50% 48% 48% / 60% 60% 52% 52%;
+  box-shadow: 0 8px 24px #0002;
+  animation: balloon-float 2.2s cubic-bezier(.23,1.01,.32,1) forwards;
+  opacity: 0.93;
+  border: 2.5px solid #fff;
+  will-change: transform, opacity;
+  /* เพิ่มแสงสะท้อน */
+  background: linear-gradient(135deg, #fff7 10%, transparent 60%);
+  /* สีหลักจะถูก override ในแต่ละ balloonN */
+}
+.balloon::before {
+  /* เชือก */
+  content: '';
+  position: absolute;
+  left: 50%; top: 100%;
+  width: 2.5px; height: 38px;
+  background: linear-gradient(to bottom, #aaa 60%, transparent 100%);
+  transform: translateX(-50%);
+  opacity: 0.7;
+  z-index: 1;
+}
+.balloon::after {
+  /* แสงสะท้อน */
+  content: '';
+  position: absolute;
+  left: 18%; top: 18%;
+  width: 13px; height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff8 60%, transparent 100%);
+  opacity: 0.7;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@keyframes balloon-float {
+  0% {
+    transform: translateY(0) scale(0.9) rotate(var(--rot, -8deg));
+    opacity: 0.2;
+  }
+  10% {
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-60vh) scale(1.05) rotate(var(--rot, 8deg));
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.1) rotate(var(--rot, -8deg));
+    opacity: 0;
+  }
+}
+
+/* Balloon individual styles for variety */
+.balloon1 {
+  background: radial-gradient(circle at 60% 30%, #ffd966 70%, #ffb347 100%);
+  width: 54px; height: 72px;
+  border-radius: 48% 52% 50% 50% / 60% 60% 52% 52%;
+  --rot: -7deg;
+}
+.balloon2 {
+  background: radial-gradient(circle at 60% 30%, #ff69b4 70%, #d72660 100%);
+  width: 48px; height: 66px;
+  border-radius: 50% 50% 48% 48% / 60% 60% 52% 52%;
+  --rot: 6deg;
+}
+.balloon3 {
+  background: radial-gradient(circle at 60% 30%, #7ed6df 70%, #3dc1d3 100%);
+  width: 44px; height: 62px;
+  border-radius: 52% 48% 50% 50% / 60% 60% 52% 52%;
+  --rot: -4deg;
+}
+.balloon4 {
+  background: radial-gradient(circle at 60% 30%, #f7b2ad 70%, #ffb6c1 100%);
+  width: 50px; height: 68px;
+  border-radius: 50% 50% 48% 48% / 60% 60% 52% 52%;
+  --rot: 8deg;
+}
+.balloon5 {
+  background: radial-gradient(circle at 60% 30%, #fff0f6 70%, #ffd6e0 100%);
+  width: 46px; height: 64px;
+  border-radius: 48% 52% 50% 50% / 60% 60% 52% 52%;
+  --rot: -10deg;
+}
+.balloon6 {
+  background: radial-gradient(circle at 60% 30%, #ffb347 70%, #ffd966 100%);
+  width: 52px; height: 70px;
+  border-radius: 50% 50% 48% 48% / 60% 60% 52% 52%;
+  --rot: 12deg;
+}
