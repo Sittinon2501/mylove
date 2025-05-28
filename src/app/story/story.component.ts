@@ -11,23 +11,29 @@ import { RouterLink } from '@angular/router';
 })
 export class StoryComponent implements AfterViewInit {
   gallery = [
-    {
+     {
       type: 'image',
-      src: 'https://plus.unsplash.com/premium_photo-1748152778956-c4accfc55249?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      alt: 'ความทรงจำ 1',
-    },
-    {
-      type: 'image',
-      src: 'https://plus.unsplash.com/premium_photo-1748152778956-c4accfc55249?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '12.jpg',
       alt: 'ความทรงจำ 2',
     },
-    { type: 'video', src: 'Repo.mp4', alt: 'วีดีโอความทรงจำ 1' },
     {
       type: 'image',
-      src: 'https://plus.unsplash.com/premium_photo-1748152778956-c4accfc55249?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      src: '2.jpg',
+      alt: 'ความทรงจำ 1',
+    },
+   
+    {
+      type: 'video',
+      src: '10.MOV', // เพิ่ม path assets/videos/ หากวิดีโอเก็บที่นั่น
+      alt: 'วีดีโอความทรงจำ 1',
+      poster:
+        'https://img.freepik.com/free-vector/beautiful-greeting-card-happy-birthday-word-modern-word-lettering-background-poster-invitation-celebration-cartoon-illustration_1150-48217.jpg', // รูปภาพก่อนกดเล่น (ถ้ามี)
+    },
+    {
+      type: 'image',
+      src: '14.jpg',
       alt: 'ความทรงจำ 3',
     },
-    // เพิ่ม media ได้ตามต้องการ
   ];
   modalOpen = false;
   modalIndex = 0;
@@ -129,12 +135,9 @@ export class StoryComponent implements AfterViewInit {
       speed: 40 + Math.random() * 40,
       alpha: 0.5 + Math.random() * 0.4,
       drift: (Math.random() - 0.5) * 0.7,
-      color: [
-        '#ff69b4',
-        '#ffd966',
-        '#f7b2ad',
-        '#7ed6df',
-      ][Math.floor(Math.random() * 4)],
+      color: ['#ff69b4', '#ffd966', '#f7b2ad', '#7ed6df'][
+        Math.floor(Math.random() * 4)
+      ],
     }));
 
     let lastTime = performance.now();
@@ -210,12 +213,9 @@ export class StoryComponent implements AfterViewInit {
       speed: 120 + Math.random() * 90,
       amplitude: 10 + Math.random() * 10,
       freq: 0.12 + Math.random() * 0.08,
-      color: [
-        '#7ed6df',
-        '#ffd966',
-        '#ff69b4',
-        '#a64ca6'
-      ][Math.floor(Math.random() * 4)],
+      color: ['#7ed6df', '#ffd966', '#ff69b4', '#a64ca6'][
+        Math.floor(Math.random() * 4)
+      ],
       alpha: 0.32 + Math.random() * 0.22,
       phase: Math.random() * Math.PI * 2,
     }));
@@ -253,12 +253,9 @@ export class StoryComponent implements AfterViewInit {
           r.speed = 120 + Math.random() * 90;
           r.amplitude = 10 + Math.random() * 10;
           r.freq = 0.12 + Math.random() * 0.08;
-          r.color = [
-            '#7ed6df',
-            '#ffd966',
-            '#ff69b4',
-            '#a64ca6'
-          ][Math.floor(Math.random() * 4)];
+          r.color = ['#7ed6df', '#ffd966', '#ff69b4', '#a64ca6'][
+            Math.floor(Math.random() * 4)
+          ];
           r.alpha = 0.32 + Math.random() * 0.22;
           r.phase = Math.random() * Math.PI * 2;
         }

@@ -7,15 +7,15 @@
     <div class="birthday-message-wrapper">
       <div class="birthday-message-deco left">🎀</div>
       <p class="birthday-message">
-        ขอให้วันนี้เป็นวันที่พิเศษ เต็มไปด้วยความสุขและรอยยิ้ม<br />
-        สุขสันต์วันเกิดนะคะ 💖
+        May today be a special day filled with happiness and smiles.<br />
+        Happy Birthday! 💖
       </p>
       <div class="birthday-message-deco right">🎀</div>
     </div>
 
-    <!-- แยก Gallery รูปภาพ -->
+    <!-- Gallery Images -->
     <div class="gallery-section">
-      <h2 class="gallery-title">ภาพความทรงจำ</h2>
+      <h2 class="gallery-title">Memory Photos</h2>
       <div class="gallery-grid">
         <ng-container *ngFor="let item of gallery; let i = index">
           <div
@@ -29,9 +29,9 @@
       </div>
     </div>
 
-    <!-- แยก Gallery วิดีโอ -->
+    <!-- Gallery Videos -->
     <div class="gallery-section">
-      <h2 class="gallery-title">วีดีโอความทรงจำ</h2>
+      <h2 class="gallery-title">Memory Videos</h2>
       <div class="gallery-grid video-gallery-grid">
         <ng-container *ngFor="let item of gallery; let i = index">
           <div
@@ -40,7 +40,12 @@
             (click)="openMedia(i)"
           >
             <div class="video-thumb">
-              <video [src]="item.src" muted></video>
+              <video
+                [src]="item.src"
+                [poster]="item.poster || ''"
+                muted
+                preload="metadata"
+              ></video>
               <span class="play-icon">
                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
                   <circle cx="18" cy="18" r="18" fill="rgba(0,0,0,0.45)" />
@@ -48,6 +53,7 @@
                 </svg>
               </span>
             </div>
+            <div class="video-title">{{ item.alt }}</div>
           </div>
         </ng-container>
       </div>
@@ -59,14 +65,13 @@
         <div class="balloon-paper">
           <div class="memory-frame">
             <p>
-              ในทุกๆ วันเกิดที่ผ่านมา เราได้สร้างความทรงจำดีๆ ร่วมกันมากมาย<br />
-              ขอบคุณที่อยู่เคียงข้างกันเสมอ ไม่ว่าจะสุขหรือทุกข์<br />
-              ขอให้ปีนี้เป็นปีที่ดีที่สุดของเธอ มีแต่รอยยิ้มและเสียงหัวเราะนะคะ
-              💖
+              On every birthday we've shared, we've created so many wonderful memories together.<br />
+              Thank you for always being by my side, through happiness and sorrow.<br />
+              I wish this year to be your best year yet, filled with smiles and laughter. 💖
             </p>
             <div class="memory-divider"></div>
             <p class="memory-love">
-              <span class="story-highlight">รักที่สุดในโลก 🥰</span>
+              <span class="story-highlight">Love you the most in the world 🥰</span>
             </p>
           </div>
         </div>
@@ -76,7 +81,7 @@
     <hr class="story-divider" />
     <div class="story-footer">
       <span style="font-size: 1.3rem; color: #ffd966">⭐</span>
-      <span>ขอบคุณที่เป็นความสุขในทุกวันของกันและกัน</span>
+      <span>Thank you for being each other's happiness every day</span>
       <span style="font-size: 1.3rem; color: #ffd966">⭐</span>
     </div>
     <button class="story-btn" routerLink="/">กลับหน้าหลัก</button>
