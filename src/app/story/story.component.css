@@ -647,4 +647,37 @@
   to   { transform: scale(1); opacity: 1; }
 }
 
+.gallery-section {
+  margin-bottom: 2.5em;
+  margin-top: 1.5em;
+}
+.gallery-title {
+  font-family: 'Kanit', 'Segoe UI', cursive, sans-serif;
+  color: #ff69b4;
+  font-size: 1.45rem;
+  margin-bottom: 0.5em;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #ffd96644;
+  font-weight: 700;
+}
+.video-gallery-grid {
+  /* ปรับให้วิดีโอใหญ่ขึ้นนิดหน่อย */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.video-gallery-grid .gallery-item {
+  min-height: 180px;
+}
+.video-gallery-grid .video-thumb video {
+  height: 220px;
+  object-fit: cover;
+}
+@media (max-width: 600px) {
+  .video-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  .video-gallery-grid .video-thumb video {
+    height: 140px;
+  }
+}
+
 /* ...existing code... */

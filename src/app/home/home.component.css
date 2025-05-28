@@ -108,9 +108,58 @@ body, html {
   box-shadow: 0 4px 24px #ffb6c1a0;
   margin-bottom: 1rem;
   transition: transform 0.5s cubic-bezier(.23,1.01,.32,1);
+  opacity: 0;
+  /* เตรียมสำหรับ animation */
 }
-.birthday-img:hover {
-  transform: scale(1.05) rotate(-2deg);
+
+.birthday-img.fly-in-left {
+  animation: flyInLeft 1.2s cubic-bezier(.23,1.01,.32,1) 0.2s both;
+}
+
+.birthday-img.fly-in-right {
+  animation: flyInRight 1.2s cubic-bezier(.23,1.01,.32,1) 0.2s both;
+}
+
+@keyframes flyInLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-120px, 80px) scale(0.7) rotate(-18deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(18px, -18px) scale(1.08) rotate(7deg);
+  }
+  75% {
+    transform: translate(-8px, 8px) scale(0.98) rotate(-4deg);
+  }
+  90% {
+    transform: translate(4px, -4px) scale(1.03) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes flyInRight {
+  0% {
+    opacity: 0;
+    transform: translate(120px, 80px) scale(0.7) rotate(18deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translate(-18px, -18px) scale(1.08) rotate(-7deg);
+  }
+  75% {
+    transform: translate(8px, 8px) scale(0.98) rotate(4deg);
+  }
+  90% {
+    transform: translate(-4px, -4px) scale(1.03) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
 }
 
 .cake-container {
@@ -326,4 +375,123 @@ body, html {
   0% { transform: translateY(-40px) rotateZ(0deg);}
   80% { opacity: 1;}
   100% { transform: translateY(340px) rotateZ(360deg); opacity: 0;}
+}
+
+.image-firework {
+  position: fixed;
+  bottom: -180px;
+  z-index: 10;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+  /* ปรับ animation ให้พุ่งขึ้นและจางหาย */
+  animation: fireworkShoot 1.6s cubic-bezier(.23,1.01,.32,1) 0.2s both;
+}
+.image-firework.left {
+  left: 2vw;
+  animation-delay: 0.2s;
+}
+.image-firework.right {
+  right: 2vw;
+  animation-delay: 0.5s;
+}
+.image-firework img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px #ffb6c1cc, 0 0 0 8px #fff0f6cc;
+  border: 3px solid #ffd6e0;
+  background: #fff;
+  opacity: 1;
+  /* ไม่ต้องใส่ animation ซ้ำใน img */
+}
+
+@keyframes fireworkShoot {
+  0% {
+    opacity: 0;
+    transform: translateY(120px) scale(0.7) rotate(-12deg);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(60px) scale(0.85) rotate(0deg);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-120px) scale(1.08) rotate(7deg);
+  }
+  80% {
+    opacity: 0.8;
+    transform: translateY(-180px) scale(0.98) rotate(-4deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-260px) scale(1.1) rotate(0deg);
+  }
+}
+
+.image-firework-group {
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  width: 0;
+  height: 100vh;
+  pointer-events: none;
+}
+.image-firework-group.left {
+  left: 0;
+}
+.image-firework-group.right {
+  right: 0;
+}
+.image-firework-group img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px #ffb6c1cc, 0 0 0 8px #fff0f6cc;
+  border: 3px solid #ffd6e0;
+  background: #fff;
+  opacity: 0;
+  transform: none;
+}
+.image-firework-group.right img {
+  left: auto;
+  right: 0;
+}
+
+@keyframes fireworkBurstLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(0) scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-30px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-60px) scale(0.7);
+  }
+}
+
+@keyframes fireworkBurstRight {
+  0% {
+    opacity: 0;
+    transform: translateX(0) scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(30px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(60px) scale(0.7);
+  }
 }

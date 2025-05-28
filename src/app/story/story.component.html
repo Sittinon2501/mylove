@@ -12,21 +12,42 @@
       </p>
       <div class="birthday-message-deco right">🎀</div>
     </div>
-    <div class="gallery-grid">
-      <ng-container *ngFor="let item of gallery; let i = index">
-        <div class="gallery-item" (click)="openMedia(i)">
-          <img
+
+    <!-- แยก Gallery รูปภาพ -->
+    <div class="gallery-section">
+      <h2 class="gallery-title">ภาพความทรงจำ</h2>
+      <div class="gallery-grid">
+        <ng-container *ngFor="let item of gallery; let i = index">
+          <div
+            class="gallery-item"
             *ngIf="item.type === 'image'"
-            [src]="item.src"
-            [alt]="item.alt"
-          />
-          <div *ngIf="item.type === 'video'" class="video-thumb">
-            <video [src]="item.src" muted></video>
-            <span class="play-icon">▶</span>
+            (click)="openMedia(i)"
+          >
+            <img [src]="item.src" [alt]="item.alt" />
           </div>
-        </div>
-      </ng-container>
+        </ng-container>
+      </div>
     </div>
+
+    <!-- แยก Gallery วิดีโอ -->
+    <div class="gallery-section">
+      <h2 class="gallery-title">วีดีโอความทรงจำ</h2>
+      <div class="gallery-grid video-gallery-grid">
+        <ng-container *ngFor="let item of gallery; let i = index">
+          <div
+            class="gallery-item"
+            *ngIf="item.type === 'video'"
+            (click)="openMedia(i)"
+          >
+            <div class="video-thumb">
+              <video [src]="item.src" muted></video>
+              <span class="play-icon">▶</span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
     <div class="story-text">
       <div class="balloon-note">
         <div class="balloon-string"></div>
