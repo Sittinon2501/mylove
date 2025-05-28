@@ -7,3 +7,90 @@ body {
 }
 
 /* You can add global styles to this file, and also import other style files */
+.music-btn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 3000;
+  background: rgba(255,255,255,0.7);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.7rem;
+  box-shadow: 0 2px 8px #ffb6c1a0;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.music-btn:focus {
+  outline: 2px solid #ffd966;
+}
+.music-btn:hover {
+  background: #ffe3e3;
+  transform: scale(1.1);
+}
+.music-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+}
+.music-icon svg {
+  width: 1.7em;
+  height: 1.7em;
+  display: block;
+}
+@media (max-width: 600px) {
+  .music-btn {
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+  .music-icon {
+    width: 1.5em;
+    height: 1.5em;
+  }
+  .music-icon svg {
+    width: 1.2em;
+    height: 1.2em;
+  }
+}
+@media (max-width: 900px) and (orientation: landscape) {
+  .music-btn {
+    top: 8px;
+    right: 8px;
+    width: 38px;
+    height: 38px;
+    font-size: 1.3rem;
+  }
+  .music-icon {
+    width: 1.3em;
+    height: 1.3em;
+  }
+  .music-icon svg {
+    width: 1em;
+    height: 1em;
+  }
+}
+@media (max-width: 400px) {
+  .music-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+  .music-icon {
+    width: 1em;
+    height: 1em;
+  }
+  .music-icon svg {
+    width: 0.9em;
+    height: 0.9em;
+  }
+}
