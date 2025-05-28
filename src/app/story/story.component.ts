@@ -35,12 +35,14 @@ export class StoryComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.startLetterRain();
     this.startHeartRain();
+    this.startZigzagRain(); // เพิ่มเรียก zigzag rain
   }
 
   @HostListener('window:resize')
   onResize() {
     this.startLetterRain();
     this.startHeartRain();
+    this.startZigzagRain(); // เพิ่มเรียก zigzag rain
   }
 
   startLetterRain() {
@@ -191,6 +193,79 @@ export class StoryComponent implements AfterViewInit {
       requestAnimationFrame(animate);
     }
     requestAnimationFrame(animate);
+  }
+
+  startZigzagRain() {
+    const canvas = document.getElementById('zigzagRain') as HTMLCanvasElement;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d')!;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const rainCount = Math.floor(16 + Math.random() * 8); // ลดจำนวนเส้น
+    const rains = Array.from({ length: rainCount }).map(() => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      length: 90 + Math.random() * 70,
+      speed: 120 + Math.random() * 90,
+      amplitude: 10 + Math.random() * 10,
+      freq: 0.12 + Math.random() * 0.08,
+      color: [
+        '#7ed6df',
+        '#ffd966',
+        '#ff69b4',
+        '#a64ca6'
+      ][Math.floor(Math.random() * 4)],
+      alpha: 0.32 + Math.random() * 0.22,
+      phase: Math.random() * Math.PI * 2,
+    }));
+
+    let lastTime = performance.now();
+
+    function draw(now: number) {
+      const delta = (now - lastTime) / 1000;
+      lastTime = now;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const r of rains) {
+        ctx.save();
+        ctx.globalAlpha = r.alpha;
+        ctx.strokeStyle = r.color;
+        ctx.lineWidth = 2.1;
+
+        ctx.beginPath();
+        ctx.moveTo(r.x, r.y);
+        for (let t = 0; t <= r.length; t += 4) {
+          const x = r.x + Math.sin(r.phase + t * r.freq) * r.amplitude;
+          const y = r.y + t;
+          ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+        ctx.restore();
+
+        r.y += r.speed * delta;
+        r.phase += delta * 2.5;
+
+        if (r.y > canvas.height + r.length) {
+          r.x = Math.random() * canvas.width;
+          r.y = -r.length;
+          r.length = 90 + Math.random() * 70;
+          r.speed = 120 + Math.random() * 90;
+          r.amplitude = 10 + Math.random() * 10;
+          r.freq = 0.12 + Math.random() * 0.08;
+          r.color = [
+            '#7ed6df',
+            '#ffd966',
+            '#ff69b4',
+            '#a64ca6'
+          ][Math.floor(Math.random() * 4)];
+          r.alpha = 0.32 + Math.random() * 0.22;
+          r.phase = Math.random() * Math.PI * 2;
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
   }
 
   openMedia(idx: number) {

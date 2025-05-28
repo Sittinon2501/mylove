@@ -1,67 +1,72 @@
-<canvas id="letterRain" style="position:fixed; left:0; top:0; width:100vw; height:100vh; z-index:0; pointer-events:none;"></canvas>
-<canvas id="heartRain" style="position:fixed; left:0; top:0; width:100vw; height:100vh; z-index:1; pointer-events:none;"></canvas>
-<!-- Decorative floating hearts -->
-<div class="floating-hearts">
-  <span class="heart" style="top:10%; left:8%;"></span>
-  <span class="heart" style="top:18%; left:90%;"></span>
-  <span class="heart" style="top:60%; left:5%;"></span>
-  <span class="heart" style="top:80%; left:85%;"></span>
-</div>
-<div class="story-main" style="position:relative; z-index:1; background: rgba(255,255,255,0.45); border-radius: 1rem; max-width:800px; width:100%;">
-  <h1>
-    <span style="font-size:2.2rem; vertical-align:middle;">💑</span>
-    เรื่องราวของเรา
-    <span style="font-size:2.2rem; vertical-align:middle;">🌈</span>
-  </h1>
-  <div class="story-quote">
-    <span>“Every moment with you is my favorite memory.”</span>
-    <span style="font-size:1.3rem; color:#ff69b4;">💖</span>
-  </div>
-  <hr class="story-divider" />
-  <div class="story-gallery">
-    <div class="media-card" *ngFor="let item of gallery; let i = index">
-      <ng-container [ngSwitch]="item.type">
-        <img *ngSwitchCase="'image'" [src]="item.src" [alt]="item.alt" (click)="openMedia(i)" />
-        <div *ngSwitchCase="'video'" class="video-thumb" (click)="openMedia(i)">
-          <video [src]="item.src" muted></video>
-          <div class="play-btn">&#9658;</div>
+<div class="story-bg">
+  <canvas id="letterRain" class="canvas-bg"></canvas>
+  <canvas id="heartRain" class="canvas-bg"></canvas>
+  <canvas id="zigzagRain" class="canvas-bg"></canvas>
+  <div class="story-content">
+    <h1 class="birthday-title">🎂 Happy Birthday! 🎉</h1>
+    <div class="birthday-message-wrapper">
+      <div class="birthday-message-deco left">🎀</div>
+      <p class="birthday-message">
+        ขอให้วันนี้เป็นวันที่พิเศษ เต็มไปด้วยความสุขและรอยยิ้ม<br />
+        สุขสันต์วันเกิดนะคะ 💖
+      </p>
+      <div class="birthday-message-deco right">🎀</div>
+    </div>
+    <div class="gallery-grid">
+      <ng-container *ngFor="let item of gallery; let i = index">
+        <div class="gallery-item" (click)="openMedia(i)">
+          <img
+            *ngIf="item.type === 'image'"
+            [src]="item.src"
+            [alt]="item.alt"
+          />
+          <div *ngIf="item.type === 'video'" class="video-thumb">
+            <video [src]="item.src" muted></video>
+            <span class="play-icon">▶</span>
+          </div>
         </div>
       </ng-container>
     </div>
-  </div>
-  <div class="story-text">
-    <div class="memory-frame">
-      <p>
-        ในทุกๆ วันเกิดที่ผ่านมา เราได้สร้างความทรงจำดีๆ ร่วมกันมากมาย<br>
-        ขอบคุณที่อยู่เคียงข้างกันเสมอ ไม่ว่าจะสุขหรือทุกข์<br>
-        ขอให้ปีนี้เป็นปีที่ดีที่สุดของเธอ มีแต่รอยยิ้มและเสียงหัวเราะนะคะ 💖
-      </p>
-      <div class="memory-divider"></div>
-      <p class="memory-love">
-        <span class="story-highlight">รักที่สุดในโลก</span>
-        <span style="font-size:1.5rem;">🥰</span>
-      </p>
+    <div class="story-text">
+      <div class="balloon-note">
+        <div class="balloon-string"></div>
+        <div class="balloon-paper">
+          <div class="memory-frame">
+            <p>
+              ในทุกๆ วันเกิดที่ผ่านมา เราได้สร้างความทรงจำดีๆ ร่วมกันมากมาย<br />
+              ขอบคุณที่อยู่เคียงข้างกันเสมอ ไม่ว่าจะสุขหรือทุกข์<br />
+              ขอให้ปีนี้เป็นปีที่ดีที่สุดของเธอ มีแต่รอยยิ้มและเสียงหัวเราะนะคะ
+              💖
+            </p>
+            <div class="memory-divider"></div>
+            <p class="memory-love">
+              <span class="story-highlight">รักที่สุดในโลก 🥰</span>
+            </p>
+          </div>
+        </div>
+        <div class="balloon"></div>
+      </div>
     </div>
+    <hr class="story-divider" />
+    <div class="story-footer">
+      <span style="font-size: 1.3rem; color: #ffd966">⭐</span>
+      <span>ขอบคุณที่เป็นความสุขในทุกวันของกันและกัน</span>
+      <span style="font-size: 1.3rem; color: #ffd966">⭐</span>
+    </div>
+    <button class="story-btn" routerLink="/">กลับหน้าหลัก</button>
   </div>
-  <hr class="story-divider" />
-  <div class="story-footer">
-    <span style="font-size:1.3rem; color:#ffd966;">⭐</span>
-    <span>ขอบคุณที่เป็นความสุขในทุกวันของกันและกัน</span>
-    <span style="font-size:1.3rem; color:#ffd966;">⭐</span>
-  </div>
-  <button class="story-btn" routerLink="/">กลับหน้าหลัก</button>
-
-  <!-- Lightbox Modal -->
-  <div class="media-modal-backdrop" *ngIf="modalOpen" (click)="closeMedia()">
-    <div class="media-modal" (click)="$event.stopPropagation()">
-      <button class="close-modal-btn" (click)="closeMedia()">×</button>
-      <ng-container [ngSwitch]="gallery[modalIndex].type">
-        <img *ngSwitchCase="'image'" [src]="gallery[modalIndex].src" [alt]="gallery[modalIndex].alt" />
-        <video *ngSwitchCase="'video'" [src]="gallery[modalIndex].src" controls autoplay></video>
+  <div class="modal-backdrop" *ngIf="modalOpen" (click)="closeMedia()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeMedia()">×</button>
+      <button class="modal-nav left" (click)="prevMedia($event)">‹</button>
+      <ng-container *ngIf="gallery[modalIndex].type === 'image'">
+        <img [src]="gallery[modalIndex].src" [alt]="gallery[modalIndex].alt" />
       </ng-container>
-      <div class="modal-caption">{{gallery[modalIndex].alt}}</div>
-      <button class="modal-nav prev" (click)="prevMedia($event)" *ngIf="gallery.length > 1">&#8592;</button>
-      <button class="modal-nav next" (click)="nextMedia($event)" *ngIf="gallery.length > 1">&#8594;</button>
+      <ng-container *ngIf="gallery[modalIndex].type === 'video'">
+        <video [src]="gallery[modalIndex].src" controls autoplay></video>
+      </ng-container>
+      <button class="modal-nav right" (click)="nextMedia($event)">›</button>
+      <div class="modal-caption">{{ gallery[modalIndex].alt }}</div>
     </div>
   </div>
 </div>
