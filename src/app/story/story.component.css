@@ -211,10 +211,38 @@
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 3rem;
-  color: #ffd966;
-  text-shadow: 0 2px 12px #ff69b4cc, 0 0 12px #fff;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 60% 40%, #ffd966cc 60%, #ff69b4cc 100%);
+  border-radius: 50%;
+  box-shadow: 0 2px 16px #ff69b4aa, 0 0 0 6px #fffbe6cc;
+  transition: box-shadow 0.18s, transform 0.18s, background 0.18s;
+  z-index: 2;
   pointer-events: none;
+}
+.video-thumb:hover .play-icon {
+  box-shadow: 0 4px 32px #ffd966cc, 0 0 0 10px #ff69b4aa;
+  transform: translate(-50%, -50%) scale(1.08) rotate(-4deg);
+  background: radial-gradient(circle at 60% 40%, #fffbe6 60%, #ffd966 100%);
+}
+.play-icon svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+  filter: drop-shadow(0 2px 8px #fffbe6cc);
+}
+@media (max-width: 600px) {
+  .play-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .play-icon svg {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 .modal-backdrop {
